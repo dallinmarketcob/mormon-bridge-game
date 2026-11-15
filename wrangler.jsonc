@@ -1,0 +1,17 @@
+{
+  // Mormon Bridge: static page in /public, game rooms in a Durable Object.
+  "name": "mormon-bridge",
+  "main": "src/index.js",
+  "compatibility_date": "2025-06-01",
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS"
+  },
+  "durable_objects": {
+    "bindings": [{ "name": "GAMES", "class_name": "GameRoom" }]
+  },
+  "migrations": [
+    // SQLite-backed Durable Objects work on Cloudflare's free plan.
+    { "tag": "v1", "new_sqlite_classes": ["GameRoom"] }
+  ]
+}
